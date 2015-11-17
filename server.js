@@ -23,5 +23,15 @@ var NoteModel = mongoose.model('note',noteSchema);
 app.get('/api/',function(req,res) {
 	res.send('Working');
 });
+app.get('/api/notes', function(req,res) {
+	NoteModel.find({},function(err,docs) {
+		if(err) {
+			res.send({error:err});
+		}
+		else {
+			res.send({note:docs});
+		}
+	});
+});
 //launch server
 app.listen('4500');
