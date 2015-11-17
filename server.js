@@ -23,6 +23,7 @@ var NoteModel = mongoose.model('note',noteSchema);
 app.get('/api/',function(req,res) {
 	res.send('Working');
 });
+//mongo data route for notes
 app.get('/api/notes', function(req,res) {
 	NoteModel.find({},function(err,docs) {
 		if(err) {
@@ -32,6 +33,6 @@ app.get('/api/notes', function(req,res) {
 			res.send({note:docs});
 		}
 	});
-});
+})
 //launch server
 app.listen('4500');
